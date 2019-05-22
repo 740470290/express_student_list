@@ -8,16 +8,34 @@
     <link rel="icon" href="../public/favicon.ico" type="image/x-icon" />
     <title>Document</title>
     <link rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/css/bootstrap.min.css">
+    <style>
+        .container{
+            position: relative;
+        }
+        .user{
+            font-size: 20px;
+            position: absolute;
+            right: 100px;
+            top:10px;
+        }
+        .exit{
+            font-size: 20px;
+            position: absolute;
+            right: 20px;
+            top:10px;
+        }
+    </style>
 </head>
 <body>
     <div class="container header">
-        <a href="#">用户:{{username}}</a>
-        <a href="/logout">
+        <span class="user">用户:{{username}}</span>
+        <a class="exit" href="/logout">
             退出
         </a>
         <div class="page-header">
             <h1>学生列表</h1>
             <a href="/stu/create"><button type="button" class="btn btn-success">添加学生</button></a>
+            <a href="/admin"><button type="button" class="btn btn-success">管理学生</button></a>
         </div>
         <div class="panel panel-default">
             <div class="panel-heading">学生列表</div>
@@ -39,9 +57,9 @@
                         <td>{{msg.sex}}</td>
                         <td>{{msg.date}}</td>
                         <td>
-                            <a href="">详情</a>
-                            <a href="">修改</a>
-                            <a href="">删除</a>
+                            <a href="#">详情</a>
+                            <a href="#">修改</a>
+                            <a href="#">删除</a>
                         </td>
                     </tr>
                 {{/each}}
