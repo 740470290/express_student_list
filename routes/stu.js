@@ -38,6 +38,9 @@ router.post('/create', urlencodedParser, function (req, res) {
     fs.writeFile('./db.json', Str_ans, 'utf8', (err) => {
         if (err) throw err;
     });
+    req.session.isLogin=true;
+    req.session.userInfo=req.body.name;
+    res.cookie("name",req.body.name);
     res.redirect('/stu');
 });
 module.exports=router;

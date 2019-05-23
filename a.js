@@ -5,8 +5,8 @@ app.engine('html',require('express-art-template'));
 const stuRouter = require('./routes/stu');
 const loginRouter = require('./routes/login');
 const session = require('express-session');
-// const cookieParser=require('cookie-parser');
-// app.use(cookieParser());
+const cookieParser=require('cookie-parser');
+app.use(cookieParser());
 // 中间件
 // app.use('/',function (req,res,next) {
 //     next();
@@ -19,6 +19,7 @@ app.use(session({
 }));
 app.use(function (req,res,next) {
     console.log(req.session);
+    console.log(req.cookies);
     if(req.url!='/login'&&req.url!='/stu/create'&&!req.session.isLogin){
         return res.redirect('/login');
     }
@@ -26,7 +27,6 @@ app.use(function (req,res,next) {
 });
 app.use('/stu',stuRouter);
 app.use('/',loginRouter);
-
 
 var server = app.listen(8080, function () {
     var host = server.address().address;
